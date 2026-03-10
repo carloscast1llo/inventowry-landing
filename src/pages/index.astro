@@ -1,0 +1,383 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  {
+    icon: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
+    title: 'Inventario Completo',
+    description: 'Registra automáticamente CPU, memoria, almacenamiento, software instalado y más de cada dispositivo.'
+  },
+  {
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+    title: 'Monitorización en Tiempo Real',
+    description: 'Alertas configurables, métricas de rendimiento y estado online/offline al instante.'
+  },
+  {
+    icon: 'M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z',
+    title: 'Comandos Remotos',
+    description: 'Ejecuta Shell y PowerShell en cualquier dispositivo. Resultados en tiempo real con historial completo.'
+  },
+  {
+    icon: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+    title: 'Enrollment Masivo',
+    description: 'Genera tokens y scripts de instalación para registrar cientos de dispositivos en minutos.'
+  },
+  {
+    icon: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z',
+    title: 'Multi-Tenant',
+    description: 'Equipos aislados con roles (Owner, Admin, Manager, Member) y permisos granulares.'
+  },
+  {
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+    title: 'Seguridad Avanzada',
+    description: 'JWT RS256, autenticación de dos factores, firma criptográfica de binarios y RBAC completo.'
+  },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '29',
+    devices: '10',
+    overage: '2,50',
+    features: ['10 dispositivos incluidos', 'Monitorización en tiempo real', 'Comandos remotos', 'Alertas de rendimiento', 'Soporte por email'],
+    highlighted: false,
+  },
+  {
+    name: 'Professional',
+    price: '99',
+    devices: '50',
+    overage: '2,00',
+    features: ['50 dispositivos incluidos', 'Todo de Starter', 'Enrollment masivo', 'Gestión de equipos', 'Soporte prioritario'],
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: '159',
+    devices: '100',
+    overage: '1,50',
+    features: ['100 dispositivos incluidos', 'Todo de Professional', 'Actualizaciones daemon', 'API completa', 'Soporte dedicado'],
+    highlighted: false,
+  },
+];
+
+const highlights = [
+  {
+    title: 'Dashboard centralizado',
+    description: 'Visualiza el estado de toda tu flota en un solo vistazo. Métricas de rendimiento, distribución por plataforma, dispositivos que necesitan atención y actividad reciente.',
+    items: ['Estado online/offline en tiempo real', 'Distribución por tipo y plataforma', 'Alertas activas y dispositivos críticos', 'Actividad reciente de la flota'],
+  },
+  {
+    title: 'Control total de cada dispositivo',
+    description: 'Accede a información detallada de hardware, software, red, almacenamiento y rendimiento. Todo desde una interfaz intuitiva con pestañas organizadas.',
+    items: ['CPU, memoria, disco y red detallados', 'Software instalado con versiones', 'Historial de IPs públicas', 'Timeline de actividad completo'],
+  },
+  {
+    title: 'Comandos remotos seguros',
+    description: 'Ejecuta Shell o PowerShell en cualquier dispositivo de tu flota. Obtén resultados en tiempo real, gestiona colas de comandos y mantén un historial auditable.',
+    items: ['Shell (Linux/macOS) y PowerShell (Windows)', 'Resultados stdout/stderr en tiempo real', 'Historial completo auditable', 'Envío masivo a múltiples dispositivos'],
+  },
+];
+---
+
+<Layout>
+  <!-- Navbar -->
+  <nav class="fixed top-0 z-50 w-full border-b border-zinc-200/80 bg-white/80 backdrop-blur-lg dark:border-zinc-800 dark:bg-zinc-950/80">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/images/logo_inventowry.svg" alt="Inventowry" class="h-8 dark:hidden" />
+        <img src="/images/logo_inventowry-dark.svg" alt="Inventowry" class="hidden h-8 dark:block" />
+      </a>
+
+      <div class="hidden items-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400 md:flex">
+        <a href="#features" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Funcionalidades</a>
+        <a href="#how-it-works" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Cómo funciona</a>
+        <a href="#pricing" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Precios</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://app.inventowry.com/login" class="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 sm:block">
+          Iniciar sesión
+        </a>
+        <a href="https://app.inventowry.com/register" class="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-700">
+          Empezar gratis
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-50/50 to-transparent dark:from-primary-950/20"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-primary-400/10 blur-3xl dark:bg-primary-600/10"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-6 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-1.5 text-sm font-medium text-primary-700 dark:border-primary-800 dark:bg-primary-950 dark:text-primary-300 mb-8">
+        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg>
+        Compatible con Windows, macOS y Linux
+      </div>
+
+      <h1 class="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
+        Gestiona todos tus dispositivos
+        <span class="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"> desde un solo lugar</span>
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400 sm:text-xl">
+        Monitoriza, controla y protege tu flota de dispositivos empresariales. Inventario automático, alertas inteligentes y comandos remotos en una plataforma unificada.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="https://app.inventowry.com/register" class="w-full rounded-xl bg-primary-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700 hover:shadow-primary-600/30 sm:w-auto">
+          Empieza tu prueba gratuita
+        </a>
+        <a href="#how-it-works" class="w-full rounded-xl border border-zinc-300 bg-white px-8 py-3.5 text-base font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 sm:w-auto">
+          Ver cómo funciona
+        </a>
+      </div>
+
+      <p class="mt-4 text-sm text-zinc-500 dark:text-zinc-500">14 días gratis &middot; Sin tarjeta de crédito</p>
+
+      <!-- Hero mockup placeholder -->
+      <div class="relative mx-auto mt-16 max-w-5xl">
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-100 p-2 shadow-2xl dark:border-zinc-700 dark:bg-zinc-800">
+          <div class="aspect-video rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
+            <div class="text-center">
+              <svg class="mx-auto size-16 text-zinc-400 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+              <p class="mt-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">Screenshot del Dashboard</p>
+              <p class="text-xs text-zinc-400 dark:text-zinc-500">Reemplazar con captura real</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-r from-primary-600/5 via-transparent to-primary-600/5 blur-2xl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform badges -->
+  <section class="border-y border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900">
+    <div class="mx-auto max-w-7xl px-6">
+      <p class="mb-8 text-center text-sm font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Compatible con todas las plataformas</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-16">
+        <div class="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+          <svg class="size-8" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          <span class="text-sm font-semibold">Windows</span>
+        </div>
+        <div class="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+          <svg class="size-8" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span class="text-sm font-semibold">macOS</span>
+        </div>
+        <div class="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+          <svg class="size-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.311.015-.466.03-2.145.426-3.768 2.12-4.087 4.367a5.27 5.27 0 00.103 2.043c-1.839.52-3.341 1.597-3.714 3.2-.212.91-.12 1.873.23 2.727a4.94 4.94 0 002.163 2.393c-.374.933-.31 1.99.163 2.886.567 1.073 1.636 1.8 2.834 1.93.15.015.3.023.45.023.75 0 1.474-.262 2.053-.74.583.478 1.307.74 2.057.74.15 0 .3-.008.45-.023 1.199-.13 2.268-.857 2.835-1.93.472-.896.537-1.953.163-2.886a4.94 4.94 0 002.163-2.393c.35-.854.442-1.817.23-2.727-.373-1.603-1.875-2.68-3.714-3.2a5.27 5.27 0 00.103-2.043c-.319-2.247-1.942-3.941-4.087-4.367a4.27 4.27 0 00-.462-.03z"/></svg>
+          <span class="text-sm font-semibold">Linux</span>
+        </div>
+        <div class="flex items-center gap-2 text-zinc-400 dark:text-zinc-500">
+          <span class="text-xs font-medium">x64</span>
+          <span class="text-zinc-300 dark:text-zinc-600">&middot;</span>
+          <span class="text-xs font-medium">ARM64</span>
+          <span class="text-zinc-300 dark:text-zinc-600">&middot;</span>
+          <span class="text-xs font-medium">i386</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">Funcionalidades</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Todo lo que necesitas para gestionar tu flota</h2>
+        <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Una plataforma completa de gestión de dispositivos diseñada para equipos modernos.</p>
+      </div>
+
+      <div class="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {features.map((feature) => (
+          <div class="group rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-primary-200 hover:shadow-lg hover:shadow-primary-600/5 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-800">
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition group-hover:bg-primary-100 dark:bg-primary-950 dark:text-primary-400">
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d={feature.icon} />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold tracking-tight">{feature.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works / Feature Highlights -->
+  <section id="how-it-works" class="border-y border-zinc-200 bg-zinc-50 py-20 sm:py-28 dark:border-zinc-800 dark:bg-zinc-900">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">Cómo funciona</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tres pasos para tener el control total</h2>
+      </div>
+
+      <div class="mt-20 space-y-24">
+        {highlights.map((highlight, i) => (
+          <div class={`flex flex-col items-center gap-12 lg:flex-row ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div class="flex-1">
+              <div class="inline-flex size-10 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700 dark:bg-primary-900 dark:text-primary-300">
+                {i + 1}
+              </div>
+              <h3 class="mt-4 text-2xl font-bold tracking-tight">{highlight.title}</h3>
+              <p class="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">{highlight.description}</p>
+              <ul class="mt-6 space-y-3">
+                {highlight.items.map((item) => (
+                  <li class="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                    <svg class="mt-0.5 size-5 shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="flex-1">
+              <div class="rounded-2xl border border-zinc-200 bg-white p-2 shadow-xl dark:border-zinc-700 dark:bg-zinc-800">
+                <div class="aspect-video rounded-xl bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
+                  <p class="text-sm text-zinc-400">Screenshot - {highlight.title}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div class="text-center">
+          <div class="text-4xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">3</div>
+          <p class="mt-2 text-sm font-medium text-zinc-600 dark:text-zinc-400">Plataformas soportadas</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">24/7</div>
+          <p class="mt-2 text-sm font-medium text-zinc-600 dark:text-zinc-400">Monitorización continua</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">&lt;5min</div>
+          <p class="mt-2 text-sm font-medium text-zinc-600 dark:text-zinc-400">Tiempo de despliegue</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">100%</div>
+          <p class="mt-2 text-sm font-medium text-zinc-600 dark:text-zinc-400">Cifrado de extremo a extremo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="border-y border-zinc-200 bg-zinc-50 py-20 sm:py-28 dark:border-zinc-800 dark:bg-zinc-900">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">Precios</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Planes para cada tamaño de flota</h2>
+        <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Empieza gratis y escala según tus necesidades.</p>
+      </div>
+
+      <div class="mx-auto mt-16 grid max-w-5xl gap-8 lg:grid-cols-3">
+        {plans.map((plan) => (
+          <div class={`relative rounded-2xl border p-8 ${plan.highlighted
+            ? 'border-primary-600 bg-white shadow-xl shadow-primary-600/10 dark:border-primary-500 dark:bg-zinc-800'
+            : 'border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800/60'
+          }`}>
+            {plan.highlighted && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-4 py-1 text-xs font-semibold text-white">
+                Más popular
+              </div>
+            )}
+            <h3 class="text-lg font-semibold">{plan.name}</h3>
+            <div class="mt-4 flex items-baseline gap-1">
+              <span class="text-4xl font-extrabold tracking-tight">{plan.price}€</span>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400">/mes</span>
+            </div>
+            <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{plan.devices} dispositivos incluidos &middot; +{plan.overage}€/extra</p>
+
+            <ul class="mt-8 space-y-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                  <svg class="mt-0.5 size-5 shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a href="https://app.inventowry.com/register" class={`mt-8 block w-full rounded-xl py-3 text-center text-sm font-semibold transition ${plan.highlighted
+              ? 'bg-primary-600 text-white shadow-sm hover:bg-primary-700'
+              : 'border border-zinc-300 text-zinc-700 hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-700'
+            }`}>
+              Empezar prueba gratuita
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Corporate -->
+      <div class="mx-auto mt-12 max-w-5xl rounded-2xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-700 dark:bg-zinc-800/60 sm:flex sm:items-center sm:justify-between sm:text-left">
+        <div>
+          <h3 class="text-lg font-semibold">Corporate</h3>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Solución personalizada para grandes organizaciones con más de 100 dispositivos.</p>
+        </div>
+        <a href="mailto:info@inventowry.com" class="mt-4 inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-700 sm:mt-0 shrink-0">
+          Contactar ventas
+          <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 to-primary-800 px-8 py-16 text-center text-white shadow-2xl sm:px-16 sm:py-20">
+        <div class="absolute inset-0 -z-10 opacity-20">
+          <div class="absolute -top-40 -right-40 size-80 rounded-full bg-white/20 blur-3xl"></div>
+          <div class="absolute -bottom-40 -left-40 size-80 rounded-full bg-white/20 blur-3xl"></div>
+        </div>
+
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Empieza a gestionar tus dispositivos hoy</h2>
+        <p class="mx-auto mt-4 max-w-xl text-lg text-primary-100">
+          Únete a equipos que ya confían en Inventowry para monitorizar y proteger su flota de dispositivos.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="https://app.inventowry.com/register" class="w-full rounded-xl bg-white px-8 py-3.5 text-base font-semibold text-primary-700 shadow-lg transition hover:bg-primary-50 sm:w-auto">
+            Empezar prueba gratuita
+          </a>
+          <a href="mailto:info@inventowry.com" class="w-full rounded-xl border border-white/30 px-8 py-3.5 text-base font-semibold text-white transition hover:bg-white/10 sm:w-auto">
+            Hablar con ventas
+          </a>
+        </div>
+        <p class="mt-4 text-sm text-primary-200">14 días gratis &middot; Sin tarjeta de crédito &middot; Cancela cuando quieras</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-200 bg-white py-12 dark:border-zinc-800 dark:bg-zinc-950">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+        <div class="flex items-center gap-2">
+          <img src="/images/logo_inventowry.svg" alt="Inventowry" class="h-6 dark:hidden" />
+          <img src="/images/logo_inventowry-dark.svg" alt="Inventowry" class="hidden h-6 dark:block" />
+        </div>
+
+        <div class="flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+          <a href="#features" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Funcionalidades</a>
+          <a href="#pricing" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Precios</a>
+          <a href="mailto:info@inventowry.com" class="transition hover:text-zinc-900 dark:hover:text-zinc-100">Contacto</a>
+        </div>
+
+        <p class="text-sm text-zinc-400 dark:text-zinc-500">&copy; 2025 Inventowry. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
