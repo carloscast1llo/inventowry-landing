@@ -61,7 +61,8 @@ const features = [
 const plans = [
   {
     name: 'Starter',
-    price: '29',
+    monthly: '29',
+    yearly: '23',
     devices: '10',
     overage: '2,50',
     features: ['10 dispositivos incluidos', 'Monitorización en tiempo real', 'Comandos remotos', 'Alertas de rendimiento', 'Soporte por email'],
@@ -69,7 +70,8 @@ const plans = [
   },
   {
     name: 'Professional',
-    price: '99',
+    monthly: '99',
+    yearly: '79',
     devices: '50',
     overage: '2,00',
     features: ['50 dispositivos incluidos', 'Todo de Starter', 'Enrollment masivo', 'Gestión de equipos', 'Soporte prioritario'],
@@ -77,11 +79,39 @@ const plans = [
   },
   {
     name: 'Enterprise',
-    price: '159',
+    monthly: '159',
+    yearly: '127',
     devices: '100',
     overage: '1,50',
     features: ['100 dispositivos incluidos', 'Todo de Professional', 'Actualizaciones daemon', 'API completa', 'Soporte dedicado'],
     highlighted: false,
+  },
+];
+
+const faqs = [
+  {
+    q: '¿Cuánto dura la prueba gratuita?',
+    a: '14 días completos con acceso a todas las funcionalidades. No se requiere tarjeta de crédito para empezar.',
+  },
+  {
+    q: '¿Qué plataformas son compatibles?',
+    a: 'Windows, macOS y Linux en arquitecturas x64, ARM64 e i386. El agente se instala con un solo comando.',
+  },
+  {
+    q: '¿Cómo se instala el agente en los dispositivos?',
+    a: 'Generamos un script de instalación único para tu equipo. Solo tienes que ejecutar un comando en el dispositivo y se registra automáticamente.',
+  },
+  {
+    q: '¿Mis datos están seguros?',
+    a: 'Toda la comunicación está cifrada con JWT RS256. Los binarios del agente están firmados criptográficamente y ofrecemos autenticación de dos factores.',
+  },
+  {
+    q: '¿Puedo cambiar de plan en cualquier momento?',
+    a: 'Sí, puedes subir o bajar de plan cuando quieras. El cambio se aplica inmediatamente y se prorratea la diferencia.',
+  },
+  {
+    q: '¿Qué pasa si supero el límite de dispositivos de mi plan?',
+    a: 'Se cobra un precio por dispositivo extra según tu plan. Sin cortes de servicio ni sorpresas.',
   },
 ];
 
@@ -106,6 +136,7 @@ const stats = [
         <a href="#features" class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">Funcionalidades</a>
         <a href="#how-it-works" class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">Cómo funciona</a>
         <a href="#pricing" class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">Precios</a>
+        <a href="#faq" class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">FAQ</a>
       </div>
 
       <div class="flex items-center gap-4">
@@ -129,6 +160,7 @@ const stats = [
         <a href="#features" class="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">Funcionalidades</a>
         <a href="#how-it-works" class="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">Cómo funciona</a>
         <a href="#pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">Precios</a>
+        <a href="#faq" class="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">FAQ</a>
         <hr class="my-2 border-zinc-200 dark:border-zinc-800" />
         <a href="https://app.inventowry.com/login" class="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">Iniciar sesión</a>
       </div>
@@ -173,7 +205,7 @@ const stats = [
         <p class="animate-fade-up animate-delay-400 mt-5 text-sm text-zinc-400 dark:text-zinc-500">14 días gratis &middot; Sin tarjeta de crédito</p>
       </div>
 
-      <!-- Hero Dashboard Mockup -->
+      <!-- Hero Dashboard Mockup - Mobile simplified -->
       <div class="animate-fade-up animate-delay-500 relative mx-auto mt-20 max-w-5xl">
         <div class="rounded-2xl border border-zinc-200/80 bg-white p-1.5 shadow-2xl shadow-zinc-900/10 dark:border-zinc-700/50 dark:bg-zinc-800 dark:shadow-black/30">
           <!-- Title bar -->
@@ -190,42 +222,42 @@ const stats = [
           </div>
 
           <!-- Dashboard content -->
-          <div class="rounded-b-xl bg-zinc-50 p-5 dark:bg-zinc-900/80">
+          <div class="rounded-b-xl bg-zinc-50 p-3 sm:p-5 dark:bg-zinc-900/80">
             <!-- Metric cards row -->
-            <div class="grid grid-cols-4 gap-3 mb-5">
-              <div class="rounded-xl border border-zinc-200/80 bg-white p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
-                <p class="text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Dispositivos</p>
-                <p class="mt-1 text-xl font-bold text-zinc-900 dark:text-zinc-100">247</p>
-                <div class="mt-1.5 flex items-center gap-1">
-                  <span class="text-[10px] font-semibold text-emerald-500">+12%</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-3 sm:mb-5">
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Dispositivos</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">247</p>
+                <div class="mt-1 flex items-center gap-1">
+                  <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-500">+12%</span>
                   <svg class="size-2.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                 </div>
               </div>
-              <div class="rounded-xl border border-zinc-200/80 bg-white p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
-                <p class="text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Online</p>
-                <p class="mt-1 text-xl font-bold text-emerald-600 dark:text-emerald-400">231</p>
-                <div class="mt-1.5 h-1.5 w-full rounded-full bg-zinc-100 dark:bg-zinc-700">
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Online</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-emerald-600 dark:text-emerald-400">231</p>
+                <div class="mt-1 h-1.5 w-full rounded-full bg-zinc-100 dark:bg-zinc-700">
                   <div class="h-1.5 rounded-full bg-emerald-500" style="width: 93%"></div>
                 </div>
               </div>
-              <div class="rounded-xl border border-zinc-200/80 bg-white p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
-                <p class="text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Alertas</p>
-                <p class="mt-1 text-xl font-bold text-amber-600 dark:text-amber-400">3</p>
-                <div class="mt-1.5 flex gap-1">
-                  <span class="inline-flex rounded bg-amber-100 px-1.5 py-0.5 text-[9px] font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">Warning</span>
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Alertas</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-amber-600 dark:text-amber-400">3</p>
+                <div class="mt-1 flex gap-1">
+                  <span class="inline-flex rounded bg-amber-100 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">Warning</span>
                 </div>
               </div>
-              <div class="rounded-xl border border-zinc-200/80 bg-white p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
-                <p class="text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Uptime</p>
-                <p class="mt-1 text-xl font-bold text-primary-600 dark:text-primary-400">99.8%</p>
-                <div class="mt-1.5 flex items-center gap-1">
-                  <span class="text-[10px] font-semibold text-emerald-500">+0.2%</span>
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5 dark:border-zinc-700/50 dark:bg-zinc-800/80">
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Uptime</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-primary-600 dark:text-primary-400">99.8%</p>
+                <div class="mt-1 flex items-center gap-1">
+                  <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-500">+0.2%</span>
                 </div>
               </div>
             </div>
 
-            <!-- Two columns -->
-            <div class="grid grid-cols-5 gap-3">
+            <!-- Two columns - hidden on mobile, show simplified version -->
+            <div class="hidden sm:grid grid-cols-5 gap-3">
               <!-- Device list -->
               <div class="col-span-3 rounded-xl border border-zinc-200/80 bg-white dark:border-zinc-700/50 dark:bg-zinc-800/80">
                 <div class="border-b border-zinc-100 px-4 py-2.5 dark:border-zinc-700/50">
@@ -283,6 +315,22 @@ const stats = [
                   ))}
                 </div>
               </div>
+            </div>
+
+            <!-- Mobile simplified device list -->
+            <div class="sm:hidden space-y-2">
+              {['srv-prod-01', 'mac-dev-carlos', 'win-mkt-laptop'].map((name, i) => (
+                <div class="flex items-center justify-between rounded-lg bg-white px-3 py-2 dark:bg-zinc-800/80">
+                  <div class="flex items-center gap-2">
+                    <div class={`size-1.5 rounded-full ${i < 2 ? 'bg-emerald-400' : 'bg-amber-400'}`}></div>
+                    <span class="text-[11px] font-medium text-zinc-700 dark:text-zinc-300">{name}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] rounded bg-zinc-100 px-1.5 py-0.5 font-medium text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400">{['Linux', 'macOS', 'Win'][i]}</span>
+                    <span class="text-[10px] tabular-nums font-semibold text-zinc-500">{[72, 45, 61][i]}%</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -534,9 +582,18 @@ const stats = [
         <p class="text-sm font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">Precios</p>
         <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-5xl">Planes para cada tamaño de flota</h2>
         <p class="mt-5 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">Empieza gratis y escala según tus necesidades.</p>
+
+        <!-- Billing toggle -->
+        <div class="mt-10 inline-flex items-center gap-3 rounded-full border border-zinc-200 bg-white p-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800" data-animate>
+          <button id="btn-monthly" class="rounded-full px-5 py-2 text-sm font-semibold text-white bg-primary-600 shadow-sm transition-all">Mensual</button>
+          <button id="btn-yearly" class="rounded-full px-5 py-2 text-sm font-semibold text-zinc-500 transition-all hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
+            Anual
+            <span class="ml-1.5 inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">-20%</span>
+          </button>
+        </div>
       </div>
 
-      <div class="mx-auto mt-20 grid max-w-5xl gap-6 lg:grid-cols-3">
+      <div class="mx-auto mt-16 grid max-w-5xl gap-6 lg:grid-cols-3">
         {plans.map((plan, i) => (
           <div data-animate style={`transition-delay: ${i * 100}ms`} class={`relative rounded-2xl border p-8 transition-all hover:-translate-y-1 ${plan.highlighted
             ? 'border-primary-500/50 bg-white shadow-2xl shadow-primary-600/10 dark:border-primary-500/30 dark:bg-zinc-800 lg:scale-105'
@@ -549,10 +606,12 @@ const stats = [
             )}
             <h3 class="text-xl font-bold">{plan.name}</h3>
             <div class="mt-5 flex items-baseline gap-1">
-              <span class="text-5xl font-black tracking-tight">{plan.price}€</span>
+              <span class="price-monthly text-5xl font-black tracking-tight">{plan.monthly}€</span>
+              <span class="price-yearly hidden text-5xl font-black tracking-tight">{plan.yearly}€</span>
               <span class="text-base text-zinc-400 dark:text-zinc-500">/mes</span>
             </div>
-            <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">{plan.devices} dispositivos incluidos<br/>+{plan.overage}€ por dispositivo extra</p>
+            <p class="price-monthly mt-3 text-sm text-zinc-500 dark:text-zinc-400">{plan.devices} dispositivos incluidos<br/>+{plan.overage}€ por dispositivo extra</p>
+            <p class="price-yearly hidden mt-3 text-sm text-zinc-500 dark:text-zinc-400">{plan.devices} dispositivos incluidos<br/>Facturación anual &middot; Ahorra un 20%</p>
 
             <hr class="my-7 border-zinc-200 dark:border-zinc-700/50" />
 
@@ -587,6 +646,32 @@ const stats = [
           Contactar ventas
           <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="relative py-24 sm:py-32">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-zinc-50 via-white to-zinc-50 dark:from-zinc-900/50 dark:via-zinc-950 dark:to-zinc-900/50"></div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center" data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">FAQ</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-5xl">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-3xl divide-y divide-zinc-200 dark:divide-zinc-800" data-animate>
+        {faqs.map((faq, i) => (
+          <details class="group py-6" data-animate style={`transition-delay: ${i * 50}ms`}>
+            <summary class="flex cursor-pointer items-center justify-between text-left">
+              <span class="text-base font-semibold text-zinc-900 dark:text-zinc-100 pr-8">{faq.q}</span>
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 transition-all group-open:rotate-45 group-open:bg-primary-50 group-open:border-primary-200 group-open:text-primary-600 dark:border-zinc-700 dark:bg-zinc-800 dark:group-open:bg-primary-950 dark:group-open:border-primary-800 dark:group-open:text-primary-400">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 pr-16">{faq.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -675,16 +760,41 @@ const stats = [
     </div>
   </footer>
 
-  <!-- Mobile menu script -->
+  <!-- Scripts -->
   <script>
+    // Mobile menu
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
-    btn?.addEventListener('click', () => {
-      menu?.classList.toggle('hidden');
-    });
-    // Close mobile menu on link click
+    btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
     menu?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => menu?.classList.add('hidden'));
     });
+
+    // Pricing toggle
+    const btnMonthly = document.getElementById('btn-monthly');
+    const btnYearly = document.getElementById('btn-yearly');
+    const monthlyEls = document.querySelectorAll('.price-monthly');
+    const yearlyEls = document.querySelectorAll('.price-yearly');
+
+    function setMonthly() {
+      btnMonthly?.classList.add('bg-primary-600', 'text-white', 'shadow-sm');
+      btnMonthly?.classList.remove('text-zinc-500');
+      btnYearly?.classList.remove('bg-primary-600', 'text-white', 'shadow-sm');
+      btnYearly?.classList.add('text-zinc-500');
+      monthlyEls.forEach(el => el.classList.remove('hidden'));
+      yearlyEls.forEach(el => el.classList.add('hidden'));
+    }
+
+    function setYearly() {
+      btnYearly?.classList.add('bg-primary-600', 'text-white', 'shadow-sm');
+      btnYearly?.classList.remove('text-zinc-500');
+      btnMonthly?.classList.remove('bg-primary-600', 'text-white', 'shadow-sm');
+      btnMonthly?.classList.add('text-zinc-500');
+      yearlyEls.forEach(el => el.classList.remove('hidden'));
+      monthlyEls.forEach(el => el.classList.add('hidden'));
+    }
+
+    btnMonthly?.addEventListener('click', setMonthly);
+    btnYearly?.addEventListener('click', setYearly);
   </script>
 </Layout>
