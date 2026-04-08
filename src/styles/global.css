@@ -136,3 +136,58 @@ html {
 .animate-float-slow {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Hero rotator — animated word that swaps every ~2.8s */
+.hero-rotator {
+  display: inline-block;
+  position: relative;
+}
+.hero-rotator-item {
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rotator-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity, filter;
+}
+.hero-rotator-item.leaving {
+  animation: rotator-out 0.45s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+@keyframes rotator-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes rotator-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.96);
+    filter: blur(8px);
+  }
+}
+
+/* Rotator color variants — each phrase gets its own gradient */
+.rot-blue   { background-image: linear-gradient(90deg, #93c5fd, #bfdbfe, #a5f3fc); }
+.rot-indigo { background-image: linear-gradient(90deg, #c7d2fe, #a5b4fc, #bfdbfe); }
+.rot-cyan   { background-image: linear-gradient(90deg, #a5f3fc, #67e8f9, #bae6fd); }
+.rot-amber  { background-image: linear-gradient(90deg, #fed7aa, #fdba74, #fcd34d); }
+.rot-teal   { background-image: linear-gradient(90deg, #99f6e4, #5eead4, #a7f3d0); }
+
+/* Reserve enough horizontal space so the layout doesn't shift between phrases */
+.hero-rotator-track {
+  display: inline-block;
+  vertical-align: baseline;
+  min-height: 1.1em;
+}
