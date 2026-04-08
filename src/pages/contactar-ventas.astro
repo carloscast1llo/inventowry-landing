@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const apiEndpoint = 'https://app.inventowry.com/api/v1/sales/contact';
+---
+
+<Layout
+  title="Contactar con ventas - Inventowry"
+  description="Habla con el equipo comercial de Inventowry. Solicita una demo personalizada o un presupuesto a medida para tu organización."
+>
+  <main class="relative min-h-screen bg-zinc-50">
+    <!-- Subtle background pattern -->
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,#fafafa,#f4f4f5_50%,#fafafa)]"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[400px] bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.06),transparent_70%)]"></div>
+
+    <div class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
+      <a href="/" class="inline-flex items-center gap-1.5 text-sm text-zinc-500 transition-colors hover:text-primary-600">
+        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+        Volver al inicio
+      </a>
+
+      <!-- Header -->
+      <div class="mt-8 text-center">
+        <div class="inline-flex items-center gap-2 rounded-full bg-primary-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-700">Contactar ventas</div>
+        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">Hablemos de tu parque tecnológico</h1>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-500">
+          Cuéntanos cuántos dispositivos quieres gestionar y nuestro equipo te enviará una propuesta personalizada en menos de 24 horas.
+        </p>
+      </div>
+
+      <!-- Form Card (mirrors flux:card from the panel) -->
+      <div class="mt-10 rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-10">
+        <!-- Success state -->
+        <div id="success-state" class="hidden text-center">
+          <div class="mx-auto flex size-16 items-center justify-center rounded-full bg-emerald-50">
+            <svg class="size-9 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <h2 class="mt-5 text-2xl font-bold tracking-tight text-zinc-900">Solicitud enviada</h2>
+          <p id="success-message" class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-zinc-500">
+            Hemos recibido tu solicitud. Nuestro equipo de ventas se pondrá en contacto contigo en menos de 24 horas.
+          </p>
+          <a href="/" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary-600/25 transition-all hover:shadow-xl hover:-translate-y-0.5">
+            Volver al inicio
+          </a>
+        </div>
+
+        <!-- Form state -->
+        <form id="sales-form" class="space-y-6" novalidate>
+          <!-- Generic error banner -->
+          <div id="form-error" class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <span id="form-error-message"></span>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-zinc-700">Nombre <span class="text-red-500">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                placeholder="Carlos Castillo"
+              />
+              <p data-error-for="name" class="mt-1.5 hidden text-xs text-red-600"></p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-zinc-700">Email <span class="text-red-500">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                placeholder="carlos@empresa.com"
+              />
+              <p data-error-for="email" class="mt-1.5 hidden text-xs text-red-600"></p>
+            </div>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-zinc-700">Teléfono <span class="text-red-500">*</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                autocomplete="tel"
+                class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                placeholder="+34 600 000 000"
+              />
+              <p data-error-for="phone" class="mt-1.5 hidden text-xs text-red-600"></p>
+            </div>
+
+            <!-- Company -->
+            <div>
+              <label for="company" class="block text-sm font-medium text-zinc-700">Empresa</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                autocomplete="organization"
+                class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                placeholder="Acme S.L."
+              />
+              <p data-error-for="company" class="mt-1.5 hidden text-xs text-red-600"></p>
+            </div>
+          </div>
+
+          <!-- Device count -->
+          <div>
+            <label for="device_count" class="block text-sm font-medium text-zinc-700">Número de dispositivos a gestionar <span class="text-red-500">*</span></label>
+            <input
+              type="number"
+              id="device_count"
+              name="device_count"
+              required
+              min="1"
+              max="100000"
+              value="100"
+              class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+            />
+            <p class="mt-1.5 text-xs text-zinc-500">Aproximado. Si no estás seguro, déjalo en 100.</p>
+            <p data-error-for="device_count" class="mt-1.5 hidden text-xs text-red-600"></p>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-sm font-medium text-zinc-700">¿En qué te podemos ayudar?</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              maxlength="2000"
+              class="mt-1.5 block w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+              placeholder="Cuéntanos brevemente tus necesidades: cumplimiento normativo, integración con Bitdefender, gestión multi-empresa, etc."
+            ></textarea>
+            <p data-error-for="message" class="mt-1.5 hidden text-xs text-red-600"></p>
+          </div>
+
+          <!-- Honeypot — visually hidden but reachable for bots -->
+          <div class="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+            <label for="website">Website (no rellenar)</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <!-- Submit -->
+          <div class="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+            <a href="/" class="text-center text-sm font-semibold text-zinc-500 transition-colors hover:text-zinc-700">
+              Cancelar
+            </a>
+            <button
+              type="submit"
+              id="submit-btn"
+              class="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-primary-600/25 transition-all hover:shadow-xl hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              <span id="submit-btn-text">Enviar solicitud</span>
+              <svg id="submit-btn-spinner" class="hidden size-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" class="opacity-25" /><path fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" /></svg>
+              <svg id="submit-btn-arrow" class="size-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Alternative contact -->
+      <div class="mt-8 text-center text-sm text-zinc-500">
+        ¿Prefieres escribirnos directamente? <a href="mailto:hola@inventowry.com" class="font-semibold text-primary-600 hover:underline">hola@inventowry.com</a>
+      </div>
+    </div>
+  </main>
+
+  <script define:vars={{ apiEndpoint }}>
+    const form = document.getElementById('sales-form');
+    const successState = document.getElementById('success-state');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitBtnText = document.getElementById('submit-btn-text');
+    const submitBtnSpinner = document.getElementById('submit-btn-spinner');
+    const submitBtnArrow = document.getElementById('submit-btn-arrow');
+    const formError = document.getElementById('form-error');
+    const formErrorMessage = document.getElementById('form-error-message');
+
+    function clearErrors() {
+      formError.classList.add('hidden');
+      document.querySelectorAll('[data-error-for]').forEach((el) => {
+        el.classList.add('hidden');
+        el.textContent = '';
+      });
+      document.querySelectorAll('#sales-form input, #sales-form textarea').forEach((el) => {
+        el.classList.remove('border-red-400', 'focus:border-red-500', 'focus:ring-red-500/20');
+      });
+    }
+
+    function showFieldError(field, message) {
+      const el = document.querySelector(`[data-error-for="${field}"]`);
+      if (el) {
+        el.textContent = message;
+        el.classList.remove('hidden');
+      }
+      const input = document.getElementById(field);
+      if (input) {
+        input.classList.add('border-red-400', 'focus:border-red-500', 'focus:ring-red-500/20');
+      }
+    }
+
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitBtnText.textContent = loading ? 'Enviando…' : 'Enviar solicitud';
+      submitBtnSpinner.classList.toggle('hidden', !loading);
+      submitBtnArrow.classList.toggle('hidden', loading);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearErrors();
+      setLoading(true);
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        company: formData.get('company') || null,
+        device_count: parseInt(formData.get('device_count'), 10),
+        message: formData.get('message') || null,
+        website: formData.get('website') || '',
+      };
+
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          form.classList.add('hidden');
+          successState.classList.remove('hidden');
+          if (data.message) {
+            document.getElementById('success-message').textContent = data.message;
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        if (response.status === 422) {
+          const data = await response.json();
+          if (data.errors) {
+            Object.entries(data.errors).forEach(([field, messages]) => {
+              showFieldError(field, Array.isArray(messages) ? messages[0] : messages);
+            });
+          }
+          formErrorMessage.textContent = 'Revisa los campos marcados e inténtalo de nuevo.';
+          formError.classList.remove('hidden');
+          return;
+        }
+
+        if (response.status === 429) {
+          formErrorMessage.textContent = 'Has enviado demasiadas solicitudes. Espera un minuto e inténtalo de nuevo.';
+          formError.classList.remove('hidden');
+          return;
+        }
+
+        const data = await response.json().catch(() => ({}));
+        formErrorMessage.textContent = data.message || 'No hemos podido enviar tu solicitud. Inténtalo de nuevo en unos minutos.';
+        formError.classList.remove('hidden');
+      } catch (err) {
+        formErrorMessage.textContent = 'Error de red. Comprueba tu conexión e inténtalo de nuevo.';
+        formError.classList.remove('hidden');
+      } finally {
+        setLoading(false);
+      }
+    });
+  </script>
+</Layout>
