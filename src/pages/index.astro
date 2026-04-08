@@ -49,12 +49,39 @@ const features = [
   },
   {
     icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
-    title: 'Seguridad Avanzada',
-    description: 'JWT RS256, autenticación de dos factores, firma criptográfica de binarios y RBAC completo.',
+    title: 'Seguridad Bitdefender',
+    description: 'Integración nativa con Bitdefender GravityZone: endpoints, incidentes, políticas y blocklist desde un único panel.',
     gradient: 'from-cyan-500 to-sky-600',
     bg: 'bg-cyan-50',
     iconColor: 'text-cyan-600',
     accent: 'cyan',
+  },
+  {
+    icon: 'M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z',
+    title: 'Cumplimiento Normativo',
+    description: 'Auditoría automática contra ISO 27001, NIS2 y ENS. Statement of Applicability, registros y evidencias listos para auditor.',
+    gradient: 'from-indigo-500 to-blue-600',
+    bg: 'bg-indigo-50',
+    iconColor: 'text-indigo-600',
+    accent: 'indigo',
+  },
+  {
+    icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+    title: 'Reportes Auditables',
+    description: 'Findings, inventario de activos, software, actualizaciones de SO y compliance. Exportables a PDF con un click.',
+    gradient: 'from-orange-500 to-red-500',
+    bg: 'bg-orange-50',
+    iconColor: 'text-orange-600',
+    accent: 'orange',
+  },
+  {
+    icon: 'M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z',
+    title: 'Portal de Partners',
+    description: 'Diseñado para MSPs: gestiona varias empresas cliente desde un único portal con facturación consolidada y health centralizado.',
+    gradient: 'from-teal-500 to-emerald-600',
+    bg: 'bg-teal-50',
+    iconColor: 'text-teal-600',
+    accent: 'teal',
   },
 ];
 
@@ -65,7 +92,14 @@ const plans = [
     yearly: '23',
     devices: '10',
     overage: '2,50',
-    features: ['10 dispositivos incluidos', 'Monitorización en tiempo real', 'Comandos remotos', 'Alertas de rendimiento', 'Soporte por email'],
+    features: [
+      '10 dispositivos incluidos',
+      'Inventario y monitorización 24/7',
+      'Comandos remotos',
+      'Alertas de rendimiento',
+      'Reportes básicos en PDF',
+      'Soporte por email',
+    ],
     highlighted: false,
   },
   {
@@ -74,7 +108,15 @@ const plans = [
     yearly: '79',
     devices: '50',
     overage: '2,00',
-    features: ['50 dispositivos incluidos', 'Todo de Starter', 'Enrollment masivo', 'Gestión de equipos', 'Soporte prioritario'],
+    features: [
+      '50 dispositivos incluidos',
+      'Todo de Starter',
+      'Enrollment masivo con tokens',
+      'Gestión de equipos y RBAC',
+      'Compliance ISO 27001 / NIS2 / ENS',
+      'Reportes auditables completos',
+      'Soporte prioritario',
+    ],
     highlighted: true,
   },
   {
@@ -83,25 +125,36 @@ const plans = [
     yearly: '127',
     devices: '100',
     overage: '1,50',
-    features: ['100 dispositivos incluidos', 'Todo de Professional', 'Actualizaciones daemon', 'API completa', 'Soporte dedicado'],
+    features: [
+      '100 dispositivos incluidos',
+      'Todo de Professional',
+      'Add-on Bitdefender GravityZone',
+      'Actualizaciones de daemon gestionadas',
+      'API completa y JWT RS256',
+      'Portal de Partners (MSP)',
+      'Soporte dedicado',
+    ],
     highlighted: false,
   },
 ];
 
 const faqs = [
-  { q: '¿Cuánto dura la prueba gratuita?', a: '14 días completos con acceso a todas las funcionalidades. No se requiere tarjeta de crédito para empezar.' },
-  { q: '¿Qué plataformas son compatibles?', a: 'Windows, macOS y Linux en arquitecturas x64, ARM64 e i386. El agente se instala con un solo comando.' },
-  { q: '¿Cómo se instala el agente en los dispositivos?', a: 'Generamos un script de instalación único para tu equipo. Solo tienes que ejecutar un comando en el dispositivo y se registra automáticamente.' },
-  { q: '¿Mis datos están seguros?', a: 'Toda la comunicación está cifrada con JWT RS256. Los binarios del agente están firmados criptográficamente y ofrecemos autenticación de dos factores.' },
-  { q: '¿Puedo cambiar de plan en cualquier momento?', a: 'Sí, puedes subir o bajar de plan cuando quieras. El cambio se aplica inmediatamente y se prorratea la diferencia.' },
-  { q: '¿Qué pasa si supero el límite de dispositivos de mi plan?', a: 'Se cobra un precio por dispositivo extra según tu plan. Sin cortes de servicio ni sorpresas.' },
+  { q: '¿Cuánto dura la prueba gratuita?', a: '14 días completos con acceso a todas las funcionalidades, hasta 3 dispositivos. No se requiere tarjeta de crédito para empezar.' },
+  { q: '¿Qué plataformas son compatibles?', a: 'Windows, macOS y Linux en arquitecturas x64, ARM64 e i386. El daemon se instala con un solo comando y se actualiza automáticamente.' },
+  { q: '¿Cómo se instala el agente en los dispositivos?', a: 'Generamos un token de instalación único por equipo o un token de enrollment masivo para registrar cientos de dispositivos. Basta con ejecutar un comando (PowerShell, curl o wget) y el dispositivo se registra automáticamente.' },
+  { q: '¿Inventowry ayuda a cumplir ISO 27001, NIS2 o el ENS?', a: 'Sí. Inventowry incluye un módulo de cumplimiento que evalúa automáticamente controles contra ISO 27001, NIS2 y el Esquema Nacional de Seguridad (ENS). Genera Statement of Applicability, registros, evidencias y reportes listos para auditor.' },
+  { q: '¿Está integrado con Bitdefender GravityZone?', a: 'Sí. El add-on de seguridad permite vincular dispositivos Inventowry con endpoints Bitdefender, gestionar incidentes, políticas, blocklist de hashes y generar reportes de protección desde el mismo panel.' },
+  { q: '¿Tienen programa para MSPs y partners?', a: 'Sí. El portal de Partners permite gestionar varias empresas cliente desde un único panel: alta de companies, usuarios, facturación consolidada, fleet health centralizado y alertas críticas agrupadas.' },
+  { q: '¿Mis datos están seguros?', a: 'Toda la comunicación dispositivo-servidor está firmada con JWT RS256. Los binarios del daemon están firmados criptográficamente, ofrecemos autenticación de dos factores (TOTP) y RBAC granular con roles Owner / Admin / Manager / Member.' },
+  { q: '¿Puedo cambiar de plan en cualquier momento?', a: 'Puedes subir de plan cuando quieras: el cambio se aplica inmediatamente y se prorratea la diferencia con Stripe. Para downgrades contacta con soporte.' },
+  { q: '¿Qué pasa si supero el límite de dispositivos de mi plan?', a: 'Se factura un overage por dispositivo extra según tu plan (2,50€ Starter · 2,00€ Professional · 1,50€ Enterprise). Sin cortes de servicio ni sorpresas.' },
 ];
 
 const stats = [
   { value: '3', label: 'Plataformas soportadas', icon: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25' },
-  { value: '24/7', label: 'Monitorización continua', icon: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' },
+  { value: '3', label: 'Marcos de cumplimiento', icon: 'M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z' },
   { value: '<5min', label: 'Tiempo de despliegue', icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' },
-  { value: '100%', label: 'Comunicación cifrada', icon: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z' },
+  { value: '100%', label: 'Cifrado JWT RS256', icon: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z' },
 ];
 ---
 
@@ -116,9 +169,10 @@ const stats = [
       </a>
 
       <!-- Links centered absolutely -->
-      <div class="absolute inset-0 hidden items-center justify-center gap-9 md:flex">
+      <div class="absolute inset-0 hidden items-center justify-center gap-7 lg:flex">
         <a href="#features" class="nav-link text-[15px] font-semibold tracking-wide text-white/75 transition-colors hover:text-white">Funcionalidades</a>
         <a href="#how-it-works" class="nav-link text-[15px] font-semibold tracking-wide text-white/75 transition-colors hover:text-white">Cómo funciona</a>
+        <a href="#partners" class="nav-link text-[15px] font-semibold tracking-wide text-white/75 transition-colors hover:text-white">Partners</a>
         <a href="#pricing" class="nav-link text-[15px] font-semibold tracking-wide text-white/75 transition-colors hover:text-white">Precios</a>
         <a href="#faq" class="nav-link text-[15px] font-semibold tracking-wide text-white/75 transition-colors hover:text-white">FAQ</a>
       </div>
@@ -131,16 +185,17 @@ const stats = [
         <a href="https://app.inventowry.com/register" class="nav-cta rounded-lg bg-white/15 backdrop-blur-sm border border-white/20 px-6 py-2.5 text-[15px] font-semibold text-white transition-all hover:bg-white/25 hover:-translate-y-0.5">
           Empezar gratis
         </a>
-        <button id="mobile-menu-btn" class="flex items-center justify-center rounded-lg p-2 text-white/70 transition hover:bg-white/10 md:hidden" aria-label="Menú">
+        <button id="mobile-menu-btn" class="flex items-center justify-center rounded-lg p-2 text-white/70 transition hover:bg-white/10 lg:hidden" aria-label="Menú">
           <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
         </button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden">
+    <div id="mobile-menu" class="hidden lg:hidden">
       <div class="flex flex-col gap-1 px-6 py-4 backdrop-blur-xl bg-primary-900/95 border-t border-white/10">
         <a href="#features" class="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Funcionalidades</a>
         <a href="#how-it-works" class="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Cómo funciona</a>
+        <a href="#partners" class="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Partners</a>
         <a href="#pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Precios</a>
         <a href="#faq" class="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">FAQ</a>
         <hr class="my-2 border-white/10" />
@@ -227,7 +282,7 @@ const stats = [
         </h1>
 
         <p class="animate-fade-up animate-delay-200 mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-          Monitoriza, controla y protege tu parque tecnológico empresarial. Inventario automático, alertas inteligentes y comandos remotos en una plataforma unificada.
+          Inventario, monitorización, comandos remotos, seguridad gestionada con Bitdefender y cumplimiento ISO 27001 / NIS2 / ENS. Toda la gestión de tu parque tecnológico en una plataforma unificada.
         </p>
 
         <div class="animate-fade-up animate-delay-300 mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -266,29 +321,29 @@ const stats = [
                 <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Dispositivos</p>
                 <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-zinc-900">247</p>
                 <div class="mt-1 flex items-center gap-1">
-                  <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-500">+12%</span>
-                  <svg class="size-2.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-500">231 online</span>
+                  <span class="size-1 rounded-full bg-emerald-500"></span>
                 </div>
               </div>
               <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5">
-                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Online</p>
-                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-emerald-600">231</p>
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Compliance</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-indigo-600">94%</p>
                 <div class="mt-1 h-1.5 w-full rounded-full bg-zinc-100">
-                  <div class="h-1.5 rounded-full bg-emerald-500" style="width: 93%"></div>
+                  <div class="h-1.5 rounded-full bg-indigo-500" style="width: 94%"></div>
+                </div>
+              </div>
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5">
+                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Bitdefender</p>
+                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-cyan-600">228</p>
+                <div class="mt-1 flex gap-1">
+                  <span class="inline-flex rounded bg-cyan-50 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-semibold text-cyan-700">Protegidos</span>
                 </div>
               </div>
               <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5">
                 <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Alertas</p>
                 <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-amber-600">3</p>
                 <div class="mt-1 flex gap-1">
-                  <span class="inline-flex rounded bg-amber-100 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-semibold text-amber-700">Warning</span>
-                </div>
-              </div>
-              <div class="rounded-xl border border-zinc-200/80 bg-white p-2.5 sm:p-3.5">
-                <p class="text-[9px] sm:text-[10px] font-medium text-zinc-400 uppercase tracking-wider">Uptime</p>
-                <p class="mt-0.5 sm:mt-1 text-lg sm:text-xl font-bold text-primary-600">99.8%</p>
-                <div class="mt-1 flex items-center gap-1">
-                  <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-500">+0.2%</span>
+                  <span class="inline-flex rounded bg-amber-100 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-semibold text-amber-700">2 críticas</span>
                 </div>
               </div>
             </div>
@@ -390,6 +445,151 @@ const stats = [
           {['x64', 'ARM64', 'i386'].map((arch) => (
             <span class="rounded-lg bg-primary-600 px-2.5 py-1 text-[11px] font-bold text-white">{arch}</span>
           ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance + Security Highlights -->
+  <section class="relative py-24 sm:py-32 bg-white overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white via-zinc-50/50 to-white"></div>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center" data-animate>
+        <div class="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-indigo-700 mb-5">Diferenciadores</div>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Más allá del inventario clásico</h2>
+        <p class="mt-5 text-lg leading-relaxed text-zinc-500">Cumplimiento normativo automatizado y seguridad gestionada con Bitdefender. Dos módulos que convierten Inventowry en la plataforma de gestión IT que tu auditor pide.</p>
+      </div>
+
+      <div class="mx-auto mt-20 grid max-w-6xl gap-6 lg:grid-cols-2">
+        <!-- Compliance Card -->
+        <div data-animate class="group relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-all hover:shadow-2xl hover:-translate-y-1">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-blue-500 to-violet-500"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="flex size-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25" /></svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">Cumplimiento</p>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-900">ISO 27001 · NIS2 · ENS</h3>
+            </div>
+          </div>
+
+          <p class="mt-5 text-sm leading-relaxed text-zinc-500">
+            Auditoría automática contra los principales marcos normativos. Genera el Statement of
+            Applicability, registros de evidencias y reportes listos para auditor sin salir del panel.
+          </p>
+
+          <!-- Compliance mockup -->
+          <div class="mt-7 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <p class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Score global</p>
+                <p class="text-3xl font-black tracking-tight text-indigo-600">94%</p>
+              </div>
+              <div class="text-right">
+                <p class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Controles</p>
+                <p class="text-sm font-bold text-zinc-700"><span class="text-emerald-600">187</span> / 199</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              {[
+                { name: 'ISO 27001', pct: 96, color: 'bg-indigo-500', label: '109/114' },
+                { name: 'NIS2', pct: 92, color: 'bg-blue-500', label: '46/50' },
+                { name: 'ENS Alto', pct: 89, color: 'bg-violet-500', label: '32/35' },
+              ].map((f) => (
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-semibold text-zinc-700">{f.name}</span>
+                    <span class="text-[10px] tabular-nums text-zinc-500">{f.label} <span class="font-semibold text-zinc-700">· {f.pct}%</span></span>
+                  </div>
+                  <div class="h-1.5 w-full rounded-full bg-zinc-200/80">
+                    <div class={`h-1.5 rounded-full ${f.color}`} style={`width: ${f.pct}%`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-5 flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2">
+              <svg class="size-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75" /></svg>
+              <span class="text-[11px] font-medium text-zinc-600">Statement of Applicability generado</span>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[9px] font-semibold text-zinc-500">PDF</span>
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-2 text-sm text-zinc-600">
+            {['Evaluación automática de controles técnicos', 'Registros: políticas, incidentes, formaciones, riesgos', 'Evidence packs por control listos para auditor'].map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-0.5 size-4 shrink-0 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Security / Bitdefender Card -->
+        <div data-animate style="transition-delay: 100ms" class="group relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-all hover:shadow-2xl hover:-translate-y-1">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="flex size-11 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600">
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-cyan-600">Seguridad gestionada</p>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-900">Bitdefender GravityZone</h3>
+            </div>
+          </div>
+
+          <p class="mt-5 text-sm leading-relaxed text-zinc-500">
+            Add-on de seguridad nativo: vincula tus dispositivos con endpoints Bitdefender, gestiona
+            incidentes, políticas y blocklist de hashes desde el mismo panel de Inventowry.
+          </p>
+
+          <!-- Security mockup -->
+          <div class="mt-7 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5">
+            <div class="grid grid-cols-3 gap-3 mb-4">
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Endpoints</p>
+                <p class="mt-0.5 text-xl font-black text-cyan-600">228</p>
+              </div>
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Incidentes</p>
+                <p class="mt-0.5 text-xl font-black text-amber-600">5</p>
+              </div>
+              <div class="rounded-xl border border-zinc-200/80 bg-white p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Bloqueados</p>
+                <p class="mt-0.5 text-xl font-black text-emerald-600">12</p>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              {[
+                { type: 'Malware detectado', host: 'win-mkt-laptop', sev: 'Crítico', sevBg: 'bg-red-100', sevText: 'text-red-700' },
+                { type: 'PUA bloqueado', host: 'mac-dev-carlos', sev: 'Medio', sevBg: 'bg-amber-100', sevText: 'text-amber-700' },
+                { type: 'Política aplicada', host: 'srv-prod-01', sev: 'Info', sevBg: 'bg-cyan-100', sevText: 'text-cyan-700' },
+              ].map((i) => (
+                <div class="flex items-center gap-2.5 rounded-lg border border-zinc-200/80 bg-white px-3 py-2">
+                  <div class="size-1.5 rounded-full bg-cyan-500"></div>
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-[11px] font-semibold text-zinc-700">{i.type}</p>
+                    <p class="truncate text-[10px] text-zinc-400">{i.host}</p>
+                  </div>
+                  <span class={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-bold ${i.sevBg} ${i.sevText}`}>{i.sev}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-2 text-sm text-zinc-600">
+            {['Auto-vinculación de endpoints por hostname/FQDN', 'Gestión de políticas y blocklist desde Inventowry', 'Kill process por PID y bloqueo de hashes con un click'].map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-0.5 size-4 shrink-0 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -587,6 +787,67 @@ const stats = [
           </div>
         </div>
       </div>
+
+      <!-- Step 4 -->
+      <div class="mt-32 flex flex-col items-center gap-12 lg:flex-row-reverse lg:gap-16" data-animate>
+        <div class="flex-1 lg:pl-8">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <div class="flex size-10 items-center justify-center rounded-full bg-white text-sm font-bold text-primary-700 shadow-lg">4</div>
+            <div class="h-px w-12 bg-gradient-to-r from-white/50 to-transparent"></div>
+          </div>
+          <h3 class="text-3xl font-bold tracking-tight text-white">Reportes listos para auditor</h3>
+          <p class="mt-4 text-lg leading-relaxed text-white/60">Findings, inventario de activos, software, actualizaciones de SO y compliance device-by-device. Cinco reportes profesionales exportables a PDF que simplifican cualquier auditoría.</p>
+          <ul class="mt-8 space-y-4">
+            {['Findings: controles no cumplidos con detalle técnico', 'Asset Inventory: hardware, propietario, ubicación, garantía', 'Software Report: aplicaciones agrupadas y top publishers', 'OS Updates: parches pendientes por severidad'].map((item) => (
+              <li class="flex items-center gap-3 text-white/65">
+                <div class="flex size-6 shrink-0 items-center justify-center rounded-full bg-white/20">
+                  <svg class="size-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                </div>
+                <span class="text-sm font-medium">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="flex-1">
+          <div class="rounded-2xl border border-white/10 bg-white p-5 shadow-2xl shadow-black/30 ring-1 ring-white/5 hover:ring-white/20 transition-all duration-500">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-100">
+              <div class="flex items-center gap-2.5">
+                <div class="flex size-9 items-center justify-center rounded-lg bg-orange-50">
+                  <svg class="size-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m6 13.5H8.25" /></svg>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-zinc-800">Findings Report</p>
+                  <p class="text-[10px] text-zinc-400">ISO 27001 · 8 abril 2026</p>
+                </div>
+              </div>
+              <span class="rounded bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">PDF</span>
+            </div>
+
+            <div class="space-y-2">
+              {[
+                { ctrl: 'A.5.23', name: 'Cifrado en reposo no aplicado', sev: 'Alto', count: 4, sevBg: 'bg-red-50', sevText: 'text-red-600', dot: 'bg-red-500' },
+                { ctrl: 'A.8.7', name: 'Antivirus desactualizado', sev: 'Alto', count: 2, sevBg: 'bg-red-50', sevText: 'text-red-600', dot: 'bg-red-500' },
+                { ctrl: 'A.8.16', name: 'Logs sin retención mínima', sev: 'Medio', count: 7, sevBg: 'bg-amber-50', sevText: 'text-amber-600', dot: 'bg-amber-500' },
+                { ctrl: 'A.5.15', name: 'MFA no aplicado a admins', sev: 'Alto', count: 1, sevBg: 'bg-red-50', sevText: 'text-red-600', dot: 'bg-red-500' },
+                { ctrl: 'A.8.32', name: 'Actualizaciones SO pendientes', sev: 'Medio', count: 12, sevBg: 'bg-amber-50', sevText: 'text-amber-600', dot: 'bg-amber-500' },
+              ].map((f) => (
+                <div class="flex items-center gap-3 rounded-lg border border-zinc-100 bg-zinc-50/50 px-3 py-2">
+                  <div class={`size-1.5 rounded-full ${f.dot}`}></div>
+                  <span class="rounded bg-white px-1.5 py-0.5 text-[9px] font-bold tabular-nums text-zinc-500">{f.ctrl}</span>
+                  <span class="flex-1 truncate text-[11px] font-medium text-zinc-700">{f.name}</span>
+                  <span class="text-[10px] tabular-nums font-semibold text-zinc-500">{f.count} disp.</span>
+                  <span class={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-bold ${f.sevBg} ${f.sevText}`}>{f.sev}</span>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 flex items-center justify-between rounded-lg bg-zinc-50 px-3 py-2">
+              <span class="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">26 hallazgos · 12 dispositivos</span>
+              <span class="text-[10px] font-bold text-orange-600">Exportar PDF →</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -603,6 +864,106 @@ const stats = [
             <p class="mt-1.5 text-sm font-medium text-zinc-500">{stat.label}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Portal -->
+  <section id="partners" class="relative py-24 sm:py-32 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-zinc-50 via-white to-zinc-50"></div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid items-center gap-16 lg:grid-cols-2">
+        <div data-animate>
+          <div class="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-700 mb-5">Partner Program</div>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Diseñado para <span class="bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">MSPs</span> y proveedores de servicios IT</h2>
+          <p class="mt-5 text-lg leading-relaxed text-zinc-500">
+            Gestiona el parque tecnológico de todos tus clientes desde un único portal. Multi-tenant
+            real con aislamiento por empresa, facturación consolidada y health centralizado.
+          </p>
+
+          <ul class="mt-8 space-y-4">
+            {[
+              { t: 'Multi-empresa', d: 'Crea, edita y administra todas las companies de tu cartera desde un único dashboard.' },
+              { t: 'Facturación consolidada', d: 'Vista unificada de la facturación de todas las empresas que gestionas, con detalle por cliente.' },
+              { t: 'Fleet health centralizado', d: 'Estado online/offline, alertas críticas y dispositivos que necesitan atención agregados.' },
+              { t: 'Gestión de usuarios por cliente', d: 'Alta, baja y cambio de rol de los usuarios de cada empresa cliente.' },
+            ].map((item) => (
+              <li class="flex gap-4">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
+                  <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                </div>
+                <div>
+                  <p class="text-base font-bold text-zinc-900">{item.t}</p>
+                  <p class="mt-1 text-sm leading-relaxed text-zinc-500">{item.d}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <a href="mailto:info@inventowry.com?subject=Quiero%20ser%20Partner%20Inventowry" class="mt-10 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-teal-600/25 transition-all hover:shadow-xl hover:-translate-y-0.5">
+            Hablar con el equipo de Partners
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          </a>
+        </div>
+
+        <!-- Partner mockup -->
+        <div data-animate style="transition-delay: 100ms" class="relative">
+          <div class="absolute -inset-4 rounded-3xl bg-gradient-to-r from-teal-400/15 via-emerald-400/15 to-cyan-400/15 blur-2xl"></div>
+
+          <div class="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-2xl shadow-zinc-900/10">
+            <div class="flex items-center justify-between mb-5 pb-4 border-b border-zinc-100">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-teal-600">Portal Partner</p>
+                <p class="text-base font-bold text-zinc-900">Cartera de clientes</p>
+              </div>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-[10px] font-bold text-teal-700">12 empresas</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 mb-5">
+              <div class="rounded-xl bg-zinc-50 p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Total disp.</p>
+                <p class="mt-0.5 text-xl font-black text-zinc-900">847</p>
+              </div>
+              <div class="rounded-xl bg-zinc-50 p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Online</p>
+                <p class="mt-0.5 text-xl font-black text-emerald-600">792</p>
+              </div>
+              <div class="rounded-xl bg-zinc-50 p-3 text-center">
+                <p class="text-[9px] font-semibold uppercase tracking-wider text-zinc-400">Críticas</p>
+                <p class="mt-0.5 text-xl font-black text-red-600">2</p>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              {[
+                { name: 'Acme Industries', devices: 142, online: 138, status: 'ok' },
+                { name: 'Northwind Logistics', devices: 89, online: 81, status: 'warning' },
+                { name: 'Globex Corp', devices: 211, online: 211, status: 'ok' },
+                { name: 'Initech Solutions', devices: 67, online: 60, status: 'critical' },
+                { name: 'Umbrella Pharma', devices: 178, online: 175, status: 'ok' },
+              ].map((c) => (
+                <div class="flex items-center justify-between rounded-lg border border-zinc-100 bg-zinc-50/40 px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <div class={`size-2 rounded-full ${c.status === 'ok' ? 'bg-emerald-500' : c.status === 'warning' ? 'bg-amber-500' : 'bg-red-500'}`}></div>
+                    <span class="text-[12px] font-semibold text-zinc-800">{c.name}</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] tabular-nums text-zinc-500"><span class="font-bold text-zinc-700">{c.online}</span>/{c.devices}</span>
+                    <div class="h-1 w-14 rounded-full bg-zinc-200/80">
+                      <div class={`h-1 rounded-full ${c.status === 'ok' ? 'bg-emerald-500' : c.status === 'warning' ? 'bg-amber-500' : 'bg-red-500'}`} style={`width: ${(c.online / c.devices) * 100}%`}></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 flex items-center justify-between rounded-lg bg-teal-50/60 border border-teal-100 px-3 py-2">
+              <span class="text-[10px] font-semibold text-teal-700">Facturación consolidada del mes</span>
+              <span class="text-sm font-black text-teal-700">€ 4.812</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -740,8 +1101,10 @@ const stats = [
           <h4 class="text-xs font-bold uppercase tracking-[0.15em] text-zinc-900">Producto</h4>
           <ul class="mt-3 space-y-2">
             <li><a href="#features" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">Funcionalidades</a></li>
-            <li><a href="#pricing" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">Precios</a></li>
             <li><a href="#how-it-works" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">Cómo funciona</a></li>
+            <li><a href="#partners" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">Partners</a></li>
+            <li><a href="#pricing" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">Precios</a></li>
+            <li><a href="#faq" class="text-sm text-zinc-500 transition-colors hover:text-primary-600">FAQ</a></li>
           </ul>
         </div>
         <div>
